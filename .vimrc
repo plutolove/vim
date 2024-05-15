@@ -12,6 +12,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'Donaldttt/fuzzyy'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/everforest'
+Plug 'ryanoasis/vim-devicons'
 
 plug#end()
 
@@ -21,8 +22,8 @@ lsp#options#OptionsSet({'showSignature': v:false})
 var lspServers = [
     {
         filetype: ['c', 'cpp'],
-        path: '/usr/bin/clangd',
-        args: ['--background-index', '--compile-commands-dir=build']
+        path: '/data01/home/mengshangqi.123/bin/clangd_15.0.6/bin/clangd',
+        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
     }
 ]
 
@@ -51,6 +52,7 @@ set nocompatible
 nnoremap <C-t> :NERDTreeToggle<CR>
 set termguicolors
 set background=dark
+set encoding=UTF-8
 
 # theme
 colorscheme everforest
