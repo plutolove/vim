@@ -52,6 +52,12 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 set termguicolors
 set background=dark
 set encoding=UTF-8
+# set cinoptions=t0
+set cindent
+set autoindent
+set sw=2
+set ts=2
+set smartindent
 
 # theme
 colorscheme everforest
