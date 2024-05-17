@@ -76,3 +76,6 @@ autocmd FileType java,c,cpp set commentstring=//\ %s
 nnoremap gd :LspGotoDefinition<CR>
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
+
+# search
+nnoremap <esc> :noh<return><esc>
