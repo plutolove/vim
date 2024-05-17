@@ -22,7 +22,7 @@ lsp#options#OptionsSet({'showSignature': v:false})
 var lspServers = [
     {
         filetype: ['c', 'cpp'],
-        path: '/data01/home/mengshangqi.123/bin/clangd_15.0.6/bin/clangd',
+        path: '/usr/bin/clangd',
         args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
     }
 ]
@@ -48,7 +48,6 @@ set hlsearch
 set showmatch
 set backspace=2
 set nocompatible
-# nnoremap <F5> :update<CR>:source %<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 set termguicolors
 set background=dark
@@ -56,7 +55,7 @@ set encoding=UTF-8
 
 # theme
 colorscheme everforest
-g:everforest_background = 'hard'
+g:everforest_background = 'soft'
 
 # status bar
 g:airline_theme = 'everforest'
@@ -71,5 +70,3 @@ autocmd FileType java,c,cpp set commentstring=//\ %s
 nnoremap gd :LspGotoDefinition<CR>
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
-# fuzzy
-nnoremap <Leader>f :FuzzyGrep <C-R><C-W><CR>
