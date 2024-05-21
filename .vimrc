@@ -48,16 +48,14 @@ set hlsearch
 set showmatch
 set backspace=2
 set nocompatible
-nnoremap <C-t> :NERDTreeToggle<CR>
 set termguicolors
 set background=dark
 set encoding=UTF-8
-# set cinoptions=t0
-set cindent
-set autoindent
-set sw=2
-set ts=2
-set smartindent
+# set cindent
+# set autoindent
+# set sw=2
+# set ts=2
+# set smartindent
 
 # theme
 colorscheme everforest
@@ -66,7 +64,6 @@ g:everforest_background = 'soft'
 # status bar
 g:airline_theme = 'everforest'
 
-#clang-format
 autocmd FileType c ClangFormatAutoEnable
 autocmd FileType cpp ClangFormatAutoEnable
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -74,6 +71,13 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 autocmd FileType java,c,cpp set commentstring=//\ %s
+
+# nerdtree
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 # jump
 nnoremap gd :LspGotoDefinition<CR>
