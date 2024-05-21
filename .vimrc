@@ -16,19 +16,6 @@ Plug 'ryanoasis/vim-devicons'
 
 plug#end()
 
-# clangd lsp
-packadd lsp
-lsp#options#OptionsSet({'showSignature': v:false})
-var lspServers = [
-    {
-        filetype: ['c', 'cpp'],
-        path: '/usr/bin/clangd',
-        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
-    }
-]
-
-g:LspAddServer(lspServers)
-
 inoremap jj <esc>
 syntax on
 filetype plugin indent on
@@ -86,3 +73,19 @@ g:floaterm_keymap_toggle = '<Leader>t'
 
 # search
 nnoremap <esc> :noh<return><esc>
+
+
+# clangd lsp
+packadd lsp
+lsp#options#OptionsSet({'showSignature': v:false})
+var lspServers = [
+    {
+        filetype: ['c', 'cpp'],
+        path: '/usr/bin/clangd',
+        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
+    }
+]
+g:LspAddServer(lspServers)
+nnoremap gd :LspGotoDefinition<CR>
+nnoremap pd :LspPeekDefinition<CR>
+nnoremap <Leader>ca :LspCodeAction<CR>
