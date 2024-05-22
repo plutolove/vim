@@ -66,10 +66,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-# jump
-nnoremap gd :LspGotoDefinition<CR>
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
+tnoremap <Esc> <C-\><C-n>
 
 # search
 nnoremap <esc> :noh<return><esc>
