@@ -1,4 +1,5 @@
 # VIM C++环境
+![image](vim.gif)
 ### Require
 * clangd
 * fuzzy
