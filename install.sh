@@ -1,5 +1,3 @@
-git clone https://github.com/plutolove/vim.git
-
 mv ~/.vim ~/.vim_backup
 mv ~/.vimrc ~/.vimrc_backup
 
@@ -13,4 +11,7 @@ if [ ! -f "~/.vim/autoload/plug.vim" ]; then
 fi
 
 # 用 vim 在后台执行 :PlugInstall 安装插件
-vim +PlugInstall +qall
+vim +PlugInstall +qa
+
+# 再次启动 Vim，这会加载新安装的插件和新配置
+vim
