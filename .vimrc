@@ -1,4 +1,5 @@
 vim9script
+language messages en_US.utf-8
 
 plug#begin('~/.vim/plugged')
 
@@ -13,6 +14,7 @@ Plug 'Donaldttt/fuzzyy'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/everforest'
 Plug 'ryanoasis/vim-devicons'
+Plug 'yegappan/lsp'
 
 plug#end()
 
@@ -75,16 +77,29 @@ nnoremap <esc> :noh<return><esc>
 
 
 # clangd lsp
-packadd lsp
-lsp#options#OptionsSet({'showSignature': v:false})
+autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
 var lspServers = [
     {
         filetype: ['c', 'cpp'],
-        path: '/usr/bin/clangd',
-        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
+        path: '/data01/home/mengshangqi.123/bin/clangd_15.0.6/bin/clangd',
+        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build64_release']
     }
 ]
-g:LspAddServer(lspServers)
+autocmd VimEnter * g:LspAddServer(lspServers)
 nnoremap gd :LspGotoDefinition<CR>
 nnoremap pd :LspPeekDefinition<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
+
+# packadd lsp
+# lsp#options#OptionsSet({'showSignature': v:false})
+# var lspServers = [
+#     {
+#         filetype: ['c', 'cpp'],
+#         path: '/usr/bin/clangd',
+#         args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
+#     }
+# ]
+# g:LspAddServer(lspServers)
+# nnoremap gd :LspGotoDefinition<CR>
+# nnoremap pd :LspPeekDefinition<CR>
+# nnoremap <Leader>ca :LspCodeAction<CR>
