@@ -52,13 +52,6 @@ set encoding=UTF-8
 # set ts=2
 # set smartindent
 
-# theme
-colorscheme everforest
-g:everforest_background = 'soft'
-
-# status bar
-g:airline_theme = 'everforest'
-
 autocmd FileType c ClangFormatAutoEnable
 autocmd FileType cpp ClangFormatAutoEnable
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -96,6 +89,15 @@ nnoremap gd :LspGotoDefinition<CR>
 nnoremap pd :LspPeekDefinition<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
 
+
+
+# theme
+g:everforest_background = 'soft'
+
+# status bar
+g:airline_theme = 'everforest'
+
+autocmd VimEnter * colorscheme everforest
 # packadd lsp
 # lsp#options#OptionsSet({'showSignature': v:false})
 # var lspServers = [
