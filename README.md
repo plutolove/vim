@@ -1,6 +1,7 @@
-# vim
+# VIM C++环境
 ### 安装配置
 ```bash
+# 只支持vim9
 git clone https://github.com/plutolove/vim.git
 cd vim
 bash install.sh
