@@ -3,6 +3,7 @@
 ### Require
 * clangd
 * fuzzy
+* vim9
 
 ### 安装配置
 ```bash
