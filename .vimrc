@@ -93,10 +93,8 @@ nnoremap <Leader>ca :LspCodeAction<CR>
 
 # theme
 g:everforest_background = 'soft'
-
 # status bar
 g:airline_theme = 'everforest'
-
 autocmd VimEnter * colorscheme everforest
 # packadd lsp
 # lsp#options#OptionsSet({'showSignature': v:false})
