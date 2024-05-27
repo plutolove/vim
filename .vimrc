@@ -81,7 +81,7 @@ var lspServers = [
     {
         filetype: ['c', 'cpp'],
         path: '/usr/bin/clangd',
-        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build64_release']
+        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
     }
 ]
 autocmd VimEnter * g:LspAddServer(lspServers)
