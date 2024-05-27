@@ -81,7 +81,7 @@ autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
 var lspServers = [
     {
         filetype: ['c', 'cpp'],
-        path: '/data01/home/mengshangqi.123/bin/clangd_15.0.6/bin/clangd',
+        path: '/usr/bin/clangd',
         args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build64_release']
     }
 ]
