@@ -21,6 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/everforest'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yegappan/lsp'
+Plug 'easymotion/vim-easymotion'
 
 plug#end()
 
@@ -91,6 +92,21 @@ nnoremap pd :LspPeekDefinition<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
 
 
+# easy motion
+g:EasyMotion_smartcase = 1
+# <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+# s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+# Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+nmap <Leader>l <Plug>(easymotion-lineforward)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>h <Plug>(easymotion-linebackward)
 
 # theme
 g:everforest_background = 'soft'
