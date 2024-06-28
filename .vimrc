@@ -48,6 +48,11 @@ set termguicolors
 set background=dark
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
+
+set nobackup
+set noswapfile
+set nowritebackup
+set noundofile
 # set cindent
 # set autoindent
 # set sw=2
