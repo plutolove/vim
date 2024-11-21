@@ -100,11 +100,15 @@ nnoremap <Leader>ca :LspCodeAction<CR>
 # easy motion
 g:EasyMotion_smartcase = 1
 nmap <Leader>f <Plug>(easymotion-overwin-f2)
-# s{char} to move to {char}
+# s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+map <Leader><Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
 # Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+# map <Leader>L <Plug>(easymotion-bd-jk)
+# nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 nmap <Leader>l <Plug>(easymotion-lineforward)
 nmap <Leader>j <Plug>(easymotion-j)
