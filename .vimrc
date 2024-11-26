@@ -25,7 +25,7 @@ Plug 'easymotion/vim-easymotion'
 
 plug#end()
 
-inoremap jj <esc>
+# inoremap jj <esc>
 syntax on
 filetype plugin indent on
 set tabstop=2
