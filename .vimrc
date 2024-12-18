@@ -84,14 +84,25 @@ nnoremap <esc> :noh<return><esc>
 
 # clangd lsp
 autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
-var lspServers = [
-    {
+
+def GetLspConfig(): list<dict<any>>
+  var args_list = ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--suggest-missing-includes', '--header-insertion=iwyu', '-j=8', '--background-index']
+  if filereadable("build64_release/compile_commands.json")
+    args_list->add("--compile-commands-dir=build64_release")
+  elseif filereadable(".vscode/compile_commands.json")
+    args_list->add("--compile-commands-dir=.vscode")
+  else
+    args_list->add("--compile-commands-dir=build")
+  endif
+  return [{
         filetype: ['c', 'cpp'],
-        path: '/usr/bin/clangd',
-        args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
+        path: trim(system('which clangd')),
+        args: args_list
     }
-]
-autocmd VimEnter * g:LspAddServer(lspServers)
+  ]
+enddef
+
+autocmd VimEnter * g:LspAddServer(GetLspConfig())
 nnoremap gd :LspGotoDefinition<CR>
 nnoremap pd :LspPeekDefinition<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
