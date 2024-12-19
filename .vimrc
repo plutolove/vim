@@ -76,6 +76,10 @@ nnoremap <C-l> <C-w>l
 
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
+g:floaterm_keymap_new = '<Leader>w'     # 新建终端。
+g:floaterm_keymap_prev = '<Leader>p'    # 上一个终端。
+g:floaterm_keymap_next = '<Leader>n'    # 下一个终端。
+g:floaterm_keymap_kill = '<Leader>k'    # 关掉终端。
 tnoremap <Esc> <C-\><C-n>
 
 # search
