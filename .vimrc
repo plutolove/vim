@@ -22,10 +22,11 @@ Plug 'sainnhe/everforest'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yegappan/lsp'
 Plug 'easymotion/vim-easymotion'
+Plug 'luochen1990/rainbow'
 
 plug#end()
 
-# inoremap jj <esc>
+inoremap jj <esc>
 syntax on
 filetype plugin indent on
 set tabstop=2
@@ -76,21 +77,28 @@ nnoremap <C-l> <C-w>l
 
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
-g:floaterm_keymap_new = '<Leader>w'     # 新建终端。
-g:floaterm_keymap_prev = '<Leader>p'    # 上一个终端。
-g:floaterm_keymap_next = '<Leader>n'    # 下一个终端。
-g:floaterm_keymap_kill = '<Leader>k'    # 关掉终端。
+# g:floaterm_keymap_new = '<Leader>w'     # 新建终端。
+# g:floaterm_keymap_prev = '<Leader>p'    # 上一个终端。
+# g:floaterm_keymap_next = '<Leader>n'    # 下一个终端。
+# g:floaterm_keymap_kill = '<Leader>k'    # 关掉终端。
 tnoremap <Esc> <C-\><C-n>
 
 # search
 nnoremap <esc> :noh<return><esc>
 
 
+g:rainbow_active = 1
+
 # clangd lsp
 autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
 
 def GetLspConfig(): list<dict<any>>
-  var args_list = ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--suggest-missing-includes', '--header-insertion=iwyu', '-j=8', '--background-index']
+  var args_list = [
+    '--log=verbose', '--pretty', '--all-scopes-completion',
+    '--completion-style=detailed', '--suggest-missing-includes',
+    '--header-insertion=iwyu', '-j=8', '--background-index',
+    '--clang-tidy', '--clang-tidy-checks=performance-*,bugprone-*'
+  ]
   if filereadable("build64_release/compile_commands.json")
     args_list->add("--compile-commands-dir=build64_release")
   elseif filereadable(".vscode/compile_commands.json")
@@ -109,18 +117,21 @@ enddef
 autocmd VimEnter * g:LspAddServer(GetLspConfig())
 nnoremap gd :LspGotoDefinition<CR>
 nnoremap pd :LspPeekDefinition<CR>
+nnoremap <Leader>dc :LspDiag current<CR>
+nnoremap <Leader>dn :LspDiag next<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
 
 
 # easy motion
 g:EasyMotion_smartcase = 1
-nmap <Leader>f <Plug>(easymotion-overwin-f2)
 # s{char}{char} to move to {char}{char}
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
 nmap s <Plug>(easymotion-overwin-f)
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-map <Leader><Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+
+# map  <Leader>w <Plug>(easymotion-bd-w)
+# nmap <Leader>w <Plug>(easymotion-overwin-w)
+# map <Leader><Leader>l <Plug>(easymotion-bd-jk)
+# nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
 # Move to line
 # map <Leader>L <Plug>(easymotion-bd-jk)
 # nmap <Leader>L <Plug>(easymotion-overwin-line)
@@ -135,16 +146,3 @@ g:everforest_background = 'soft'
 # status bar
 g:airline_theme = 'everforest'
 autocmd VimEnter * colorscheme everforest
-# packadd lsp
-# lsp#options#OptionsSet({'showSignature': v:false})
-# var lspServers = [
-#     {
-#         filetype: ['c', 'cpp'],
-#         path: '/usr/bin/clangd',
-#         args: ['--log=verbose', '--pretty', '--all-scopes-completion', '--completion-style=detailed', '--header-insertion=iwyu', '-j=8', '--background-index', '--compile-commands-dir=build']
-#     }
-# ]
-# g:LspAddServer(lspServers)
-# nnoremap gd :LspGotoDefinition<CR>
-# nnoremap pd :LspPeekDefinition<CR>
-# nnoremap <Leader>ca :LspCodeAction<CR>
