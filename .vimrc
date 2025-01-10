@@ -23,6 +23,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'yegappan/lsp'
 Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
+Plug 'airblade/vim-gitgutter'
 
 plug#end()
 
@@ -58,7 +59,11 @@ set noundofile
 # set autoindent
 # set sw=2
 # set ts=2
-# set smartindent
+set smartindent
+
+# search
+nnoremap <esc> :noh<return><esc>
+
 
 autocmd FileType c ClangFormatAutoEnable
 autocmd FileType cpp ClangFormatAutoEnable
@@ -83,11 +88,9 @@ g:floaterm_keymap_toggle = '<Leader>t'
 # g:floaterm_keymap_kill = '<Leader>k'    # 关掉终端。
 tnoremap <Esc> <C-\><C-n>
 
-# search
-nnoremap <esc> :noh<return><esc>
-
-
+# rainbow
 g:rainbow_active = 1
+
 
 # clangd lsp
 autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
