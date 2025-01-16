@@ -59,7 +59,7 @@ set noundofile
 # set autoindent
 # set sw=2
 # set ts=2
-set smartindent
+# set smartindent
 
 # search
 nnoremap <esc> :noh<return><esc>
