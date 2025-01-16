@@ -129,7 +129,7 @@ nnoremap <Leader>ca :LspCodeAction<CR>
 g:EasyMotion_smartcase = 1
 # s{char}{char} to move to {char}{char}
 nmap <Leader>f <Plug>(easymotion-overwin-f2)
-nmap s <Plug>(easymotion-overwin-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f)
 
 # map  <Leader>w <Plug>(easymotion-bd-w)
 # nmap <Leader>w <Plug>(easymotion-overwin-w)
