@@ -24,9 +24,11 @@ Plug 'yegappan/lsp'
 Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'rust-analyzer/rust-analyzer'
 
 plug#end()
 
+# inoremap jj <esc>
 syntax on
 filetype plugin indent on
 set tabstop=2
@@ -72,12 +74,18 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 autocmd FileType java,c,cpp set commentstring=//\ %s
 
+# rustup component add rust-src rust-analyzer rustfmt
+g:rustfmt_autosave = 1
+
 # nerdtree
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+# git
+g:gitgutter_sign_priority = 0
 
 # floatterm
 g:floaterm_keymap_toggle = '<Leader>t'
@@ -108,11 +116,19 @@ def GetLspConfig(): list<dict<any>>
   else
     args_list->add("--compile-commands-dir=build")
   endif
-  return [{
+  return [
+      {
         filetype: ['c', 'cpp'],
         path: trim(system('which clangd')),
         args: args_list
-    }
+      },
+      {
+        name: 'rustlang',
+        filetype: ['rust'],
+        path: trim(system('which rust-analyzer')),
+        args: [],
+        syncInit: v:true
+      }
   ]
 enddef
 
@@ -127,7 +143,7 @@ nnoremap <Leader>ca :LspCodeAction<CR>
 # easy motion
 g:EasyMotion_smartcase = 1
 # s{char}{char} to move to {char}{char}
-nmap <Leader>f <Plug>(easymotion-overwin-f2)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f2)
 nmap s <Plug>(easymotion-overwin-f)
 
 # map  <Leader>w <Plug>(easymotion-bd-w)
