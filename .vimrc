@@ -24,7 +24,7 @@ Plug 'yegappan/lsp'
 Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'rust-analyzer/rust-analyzer'
+Plug 'rust-lang/rust.vim'
 
 plug#end()
 
