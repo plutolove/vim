@@ -120,14 +120,20 @@ def GetLspConfig(): list<dict<any>>
       {
         filetype: ['c', 'cpp'],
         path: trim(system('which clangd')),
-        args: args_list
+        args: args_list,
       },
       {
         name: 'rustlang',
         filetype: ['rust'],
         path: trim(system('which rust-analyzer')),
         args: [],
-        syncInit: v:true
+        syncInit: v:true,
+      },
+      {
+        name: 'pylsp',
+        filetype: ['python'],
+        path: trim(system('which pylsp')),
+        args: [],
       }
   ]
 enddef
