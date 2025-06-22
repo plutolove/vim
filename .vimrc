@@ -25,6 +25,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'rust-lang/rust.vim'
+Plug 'ilyachur/cmake4vim'
+Plug 'pboettch/vim-cmake-syntax'
 
 plug#end()
 
@@ -66,13 +68,15 @@ set noundofile
 nnoremap <esc> :noh<return><esc>
 
 
-autocmd FileType c ClangFormatAutoEnable
-autocmd FileType cpp ClangFormatAutoEnable
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp,cuda ClangFormatAutoEnable
+autocmd FileType c,cpp,cuda,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,cuda,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 autocmd FileType java,c,cpp set commentstring=//\ %s
+
+au BufNewFile,BufRead *.cu set filetype=cuda
+au BufNewFile,BufRead *.cuh set filetype=cuda
 
 # rustup component add rust-src rust-analyzer rustfmt
 g:rustfmt_autosave = 1
@@ -118,7 +122,7 @@ def GetLspConfig(): list<dict<any>>
   endif
   return [
       {
-        filetype: ['c', 'cpp'],
+        filetype: ['c', 'cpp', 'cuda'],
         path: trim(system('which clangd')),
         args: args_list,
       },
@@ -164,6 +168,13 @@ nmap <Leader>l <Plug>(easymotion-lineforward)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>h <Plug>(easymotion-linebackward)
+
+
+g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
+  'cu': '',
+  'cuh': '',
+  'cmake': '',
+}
 
 # theme
 g:everforest_background = 'soft'
