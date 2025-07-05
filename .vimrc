@@ -25,8 +25,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'rust-lang/rust.vim'
-Plug 'ilyachur/cmake4vim'
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'ilyachur/cmake4vim'
 
 plug#end()
 
@@ -102,6 +102,11 @@ tnoremap <Esc> <C-\><C-n>
 # rainbow
 g:rainbow_active = 1
 
+g:rainbow_conf = {
+   'separately': {
+       'cmake': 0,
+   }
+}
 
 # clangd lsp
 autocmd VimEnter * g:LspOptionsSet({'showSignature': v:false})
@@ -115,6 +120,10 @@ def GetLspConfig(): list<dict<any>>
   ]
   if filereadable("build64_release/compile_commands.json")
     args_list->add("--compile-commands-dir=build64_release")
+  elseif filereadable("cmake-build-Release/compile_commands.json")
+    args_list->add("--compile-commands-dir=cmake-build-Release")
+  elseif filereadable("cmake-build-Debug/compile_commands.json")
+    args_list->add("--compile-commands-dir=cmake-build-Debug")
   elseif filereadable(".vscode/compile_commands.json")
     args_list->add("--compile-commands-dir=.vscode")
   else
@@ -173,7 +182,7 @@ nmap <Leader>h <Plug>(easymotion-linebackward)
 g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
   'cu': '',
   'cuh': '',
-  'cmake': '',
+  # 'cmake': '',
 }
 
 # theme
