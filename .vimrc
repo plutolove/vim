@@ -158,6 +158,9 @@ nnoremap <Leader>dc :LspDiag current<CR>
 nnoremap <Leader>dn :LspDiag next<CR>
 nnoremap <Leader>ca :LspCodeAction<CR>
 
+# cmake
+nnoremap <leader>cg :CMake<CR>   
+nnoremap <leader>cb :CMakeBuild<CR>
 
 # easy motion
 g:EasyMotion_smartcase = 1
